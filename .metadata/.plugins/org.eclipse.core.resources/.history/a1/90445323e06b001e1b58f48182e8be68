@@ -1,0 +1,46 @@
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class jsexec {
+    public static void main(String[] args) throws InterruptedException {
+        // Set the path to the ChromeDriver executable
+
+        System.setProperty("webdriver.edge.driver", "C:\\Users\\gaddam.akhil.reddy\\Downloads\\edgedriver_win64\\msedgedriver.exe");
+        WebDriver driver=new EdgeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.get("https://www.ets.org/");
+        driver.manage().window().maximize();
+        
+        System.out.println(driver.getTitle());
+ 		Thread.sleep(5000);
+ 	
+        //driver.findElement(By.cssSelector("#nav-box i img:nth-child(2)")).click();
+     WebElement banner   =driver.findElement(By.className("ot-sdk-row"));
+     if(banner.isDisplayed()) {
+     	driver.findElement(By.id("onetrust-accept-btn-handler")).click();
+     }
+
+        
+       
+         
+        // Create a JavaScriptExecutor instance
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Scroll down by a specific pixel value (e.g., 500 pixels)
+        js.executeScript("window.scrollBy(0, 2000)");
+
+        // Alternatively, you can scroll to a specific element on the page
+        WebElement element = driver.findElement(By.id("elementId")); // Replace with your target element's id
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+
+        // Close the WebDriver
+        driver.quit();
+    }
+}
+
+

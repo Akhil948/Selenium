@@ -1,0 +1,43 @@
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+import PO.Startingpage;
+
+public class practice {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		  System.setProperty("webdriver.edge.driver", "C:\\Users\\gaddam.akhil.reddy\\Downloads\\edgedriver_win64\\msedgedriver.exe");
+	      WebDriver driver=new EdgeDriver();
+	      driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	     driver.get("https://www.ets.org/");
+	      
+	      
+	     
+	      driver.manage().window().maximize();
+	      
+	      //System.out.println(driver.getTitle());
+			Thread.sleep(5000);
+			
+	      //driver.findElement(By.cssSelector("#nav-box i img:nth-child(2)")).click();
+	   WebElement banner   =driver.findElement(By.className("ot-sdk-row"));
+	   if(banner.isDisplayed()) {
+	   	driver.findElement(By.id("onetrust-accept-btn-handler")).click();
+	   	
+	   
+	   }
+	   
+	   driver.findElement(By.xpath("//a[@class='nav-link theme-toefl-bar ']")).click();
+	   
+	   Thread.sleep(5000);
+	   
+	   driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[4]/a[1]/span[1]")).click();
+	   
+
+	}
+
+}

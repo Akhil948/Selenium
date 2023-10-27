@@ -1,0 +1,97 @@
+import java.time.Duration;
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+
+
+public class Selenium {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	
+       System.setProperty("webdriver.edge.driver", "C:\\Users\\gaddam.akhil.reddy\\Downloads\\edgedriver_win64\\msedgedriver.exe");
+       WebDriver driver=new EdgeDriver();
+       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+       driver.get("https://www.ets.org/");
+       driver.manage().window().maximize();
+       
+       System.out.println(driver.getTitle());
+		Thread.sleep(5000);
+	
+       //driver.findElement(By.cssSelector("#nav-box i img:nth-child(2)")).click();
+    WebElement banner   =driver.findElement(By.className("ot-sdk-row"));
+    if(banner.isDisplayed()) {
+    	driver.findElement(By.id("onetrust-accept-btn-handler")).click();
+    }
+    	
+    /*Actions a=new Actions(driver);
+    a.moveToElement(driver.findElement(By.className("login-btn"))).click().build().perform();*/
+	
+
+	driver.findElement(By.xpath("//div/ul/li/a")).click();
+	
+	Thread.sleep(5000);
+	
+	driver.findElement(By.className("program")).click();
+	
+	Thread.sleep(5000);
+	
+	driver.findElement(By.className("ui-accordion-header")).click();
+	
+	
+	
+	/*Actions a =new Actions(driver);
+	a.moveToElement(driver.findElement(By.className("oda-chat-user-input"))).click().keyDown(Keys.SHIFT).sendKeys("Hello").doubleClick().build().perform();
+	a.moveToElement(driver.findElement(By.className("oda-chat-footer-button-icon"))).click().build().perform();
+	a.moveToElement(driver.findElement(By.className("oda-chat-icon"))).click().build().perform();
+	
+	
+	    //driver.findElement(By.id("ui-id-2")).click();
+	
+	//driver.findElement(By.xpath("//div/button/div")).click();
+	
+	
+	/* WebDriverWait wait=new WebDriverWait(driver,10);
+
+     // Example 1: Wait for an element to be visible
+     WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oda-chat-message-wrapper']/div/div/button[1]")));
+     // Perform actions on the element
+     element.click();*/
+
+    
+	//driver.findElement(By.xpath("//div[@class='oda-chat-message-wrapper']/div/div/button[1]")).click();
+	
+	/* Wait<WebDriver> wait = new FluentWait<>(driver)
+             .withTimeout(Duration.ofSeconds(30))
+             .pollingEvery(Duration.ofSeconds(2))
+             .ignoring(NoSuchElementException.class)
+             .ignoring(StaleElementReferenceException.class);
+
+     // Example 1: Wait for an element to be visible
+     WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='oda-chat-message-wrapper']/div/div/button[1]")));
+     // Perform actions on the element
+     element.click();*/
+ 
+    
+   
+	
+	
+	
+	
+	
+}
+}
